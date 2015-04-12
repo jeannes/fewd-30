@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 
+/*header*/
 header {
   background-color: #c4c4c4;
   padding: 10px 20px;
@@ -34,6 +35,7 @@ header nav a {
   text-decoration: none;
 }
 
+/*main*/
 main,
 footer {
   max-width: 600px;
@@ -56,6 +58,7 @@ main p {
   margin-bottom: 0;
 }
 
+/*footer*/
 footer {
   color: #9A989A;
   font-size: 12px;
@@ -66,10 +69,38 @@ footer {
   text-shadow: 0 1px 0 white;
 }
 
+/*nav*/
 nav li:last-child a {
   background-color: #2A4CB2;
   padding: 10px 20px;
   border: 1px solid #213A82;
   text-shadow: 0 1px 0 #213A82;
   border-radius: 4px;
+}
+
+/*sign up form*/
+form {
+  display: flex;
+}
+
+.sign-form1 .item {
+  width: 120px;
+}
+
+.sign-form2 .item {
+  width: 120px;
+}
+
+.sign-form3 .item {
+  width: 120px;
+}
+
+.sign-form4 .item {
+  width: 120px;
+}
+
+.formbox {
+  border-radius: 4px;
+  border-color: pink;
+  padding-left: 4px;
 }
