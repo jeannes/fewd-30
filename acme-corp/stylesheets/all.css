@@ -38,7 +38,7 @@ header nav a {
 /*main*/
 main,
 footer {
-  max-width: 600px;
+  max-width: 660px;
   margin: 0 auto;
   padding: 30px;
 }
@@ -81,26 +81,46 @@ nav li:last-child a {
 /*sign up form*/
 form {
   display: flex;
+  display: -webkit- flex;
 }
 
-.sign-form1 .item {
+form .item {
   width: 120px;
-}
-
-.sign-form2 .item {
-  width: 120px;
-}
-
-.sign-form3 .item {
-  width: 120px;
-}
-
-.sign-form4 .item {
-  width: 120px;
+  padding: 4px 4px 4px 0px;
 }
 
 .formbox {
   border-radius: 4px;
-  border-color: pink;
-  padding-left: 4px;
+  border: 1px solid pink;
+  padding: 4px;
+  color: gray;
+
+}
+
+/*Products*/
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  display: -webkit- flex;
+}
+
+.pic img {
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid silver;
+}
+
+.info {
+  flex: 1;
+  padding: 0px 20px 0px 20px;
+}
+
+.cart {
+  background-color: crimson;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  border: 1px solid black;
 }
