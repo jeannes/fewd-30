@@ -82,6 +82,7 @@ nav li:last-child a {
 form {
   display: flex;
   display: -webkit- flex;
+  display: -MS- flex;
 }
 
 form .item {
