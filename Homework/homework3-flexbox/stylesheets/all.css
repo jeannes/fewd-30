@@ -1,6 +1,6 @@
 html {
   background-color: #EEEDEC;
-  background-image: url(../images/background.png);
+  background-image: url(../../images/background.png);
   font-family: "Lucida Grande", sans-serif;
 }
 body {
@@ -103,7 +103,7 @@ ul.product {
   padding: 0;
 }
 
-li {
+.product li {
   list-style: none;
   padding: 10px 0 10px 0;
   border-bottom: 1px solid #cecece;
