@@ -1,0 +1,47 @@
+<!-- Homework 4 -->
+
+<script>
+
+function longestSide(a, b) {
+  a = parseFloat(a);
+  b = parseFloat(b);
+  var result = Math.sqrt((a * a) + (b * b));
+  return result;
+}
+
+function circumference(r) {
+  r = parseFloat(r);
+  var result = (2 * Math.PI * r);
+  return result;
+}
+
+function tempC(f) {
+  f = parseFloat(f);
+  var result = ((f - 32) * (5 / 9));
+  return result;
+}
+
+function centim(i) {
+  i = parseFloat(i);
+  var result = (i / 0.39370);
+  return result;
+}
+
+var a = prompt("What is a?");
+var b = prompt("What is b?");
+var c = longestSide(a, b);
+alert("The longest side is: " + c);
+
+var r = prompt("What is the radius?");
+var cf = circumference(r);
+alert("The circumference is " + cf);
+
+var f = prompt("What is the temp outside in F?");
+var tc = tempC(f);
+alert("In C, that's " + tc);
+
+var i = prompt("How tall are you in inches?")
+var cm = centim(i);
+alert("In centimeters, that's " + cm);
+
+</script>
