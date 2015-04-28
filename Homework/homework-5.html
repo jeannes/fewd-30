@@ -1,0 +1,98 @@
+<style>
+body { font-size: 20px; font-family: sans-serif; }
+
+td { width: 100px; text-align: center; }
+.placeholder, button { width: 100%; }
+.placeholder { height: 23px; border: 1px solid #bababa; border-radius: 3px; }
+button { cursor: pointer; border: 1px solid #58c0f5; color: #58c0f5; background-color: white; font: inherit; }
+button { background-color: #58c0f5; color: white; border-radius: 3px; }
+</style>
+
+<table>
+  <tr>
+    <td>
+      <div id="first-operand" class="placeholder" contenteditable></div>
+    </td>
+    <td>
+      <div id="second-operand" class="placeholder" contenteditable></div>
+    </td>
+    <td>
+      =
+    </td>
+    <td>
+      <div id="result" class="placeholder"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button id="add-button" class="inverted-button">+</button>
+    </td>
+    <td>
+      <button id="subtract-button" class="inverted-button">-</button>
+    </td>
+    <td>
+      <button id="multiply-button" class="inverted-button">*</button>
+    </td>
+    <td>
+      <button id="divide-button" class="inverted-button">/</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+  // Your code goes here
+
+  var firstOperand = document.querySelector("#first-operand");
+  var secondOperand = document.querySelector("#second-operand");
+  var result = document.querySelector("#result");
+
+//add button
+  var addButton = document.querySelector("#add-button");
+
+  function addButtonClicked(clickEvent) {
+    var num1 = parseFloat(firstOperand.textContent);
+    var num2 = parseFloat(secondOperand.textContent);
+    var sum = num1 + num2;
+    result.textContent = sum;
+  }
+
+  addButton.addEventListener("click", addButtonClicked);
+
+  //subtract button
+  var subButton = document.querySelector("#subtract-button");
+
+  function subButtonClicked(clickEvent) {
+    var num1 = parseFloat(firstOperand.textContent);
+    var num2 = parseFloat(secondOperand.textContent);
+    var diff = num1 - num2;
+    result.textContent = diff;
+  }
+
+  subButton.addEventListener("click", subButtonClicked);
+
+  //multiply button
+  var multiplyButton = document.querySelector("#multiply-button");
+
+  function multiplyButtonClicked(clickEvent) {
+    var num1 = parseFloat(firstOperand.textContent);
+    var num2 = parseFloat(secondOperand.textContent);
+    var prod = num1 * num2;
+    result.textContent = prod;
+  }
+
+  multiplyButton.addEventListener("click", multiplyButtonClicked);
+
+  //divide button
+  var divideButton = document.querySelector("#divide-button");
+
+  function divideButtonClicked(clickEvent) {
+    var num1 = parseFloat(firstOperand.textContent);
+    var num2 = parseFloat(secondOperand.textContent);
+    var quot = num1 / num2;
+    result.textContent = quot;
+  }
+
+  divideButton.addEventListener("click", divideButtonClicked);
+
+
+</script>
