@@ -1,0 +1,81 @@
+<ul>
+  <!-- Movies will go here, see below. -->
+</ul>
+
+<script>
+var favoriteMovies = [
+  {
+    name: 'Cool Runnings',
+    year: 1993,
+    url: 'http://www.imdb.com/title/tt0106611/',
+    ratings: [5, 5, 5, 5, 5, 5, 5, 5]
+  },
+  {
+    name: 'Terminator 2',
+    year: 1991,
+    url: 'http://www.imdb.com/title/tt0103064/',
+    ratings: [5, 4, 3, 5, 4, 5, 4, 5, 5, 5, 3]
+  },
+  {
+    name: 'Interstellar',
+    year: 2014,
+    url: 'http://www.imdb.com/title/tt0816692/',
+    ratings: [5, 3, 5, 5, 1, 2, 4, 5, 5, 2]
+   }
+]
+
+var movieList = document.querySelector("ul");
+
+// When the page loads, loop through the favoriteMovies array and for each movie:
+function loadMovies() {
+  for (var i = 0; i < favoriteMovies.length; i++) {
+    // Create an anchor with href and text content set up properly
+    var movieLink = document.createElement("a");
+    var movie = favoriteMovies[i];
+    movieLink.textContent = movie.name;
+    movieLink.setAttribute("href", movie.url);
+    // Create a span with the year, average rating, and number of ratings set as text content
+    var movieInfo = document.createElement("span");
+    var numRating = movie.ratings.length;
+    //loop to add up the sum rating for each Movie
+    var ratingSum = 0;
+       for (var j = 0; j < numRating; j++) {
+         ratingSum += /* = ratingSum + */ movie.ratings[j];
+       }
+    //Average the rating and round decimals
+    var ratingAvg = Math.round(ratingSum/numRating * 10) /10;
+    //set text content for span
+    movieInfo.textContent = " (" + movie.year + ", " + ratingAvg + " Stars, " + numRating + " ratings)";
+    // Create a list item
+    var listItem = document.createElement("li");
+    // Append the anchor to the list item
+    listItem.appendChild(movieLink);
+    // Append the span to the list item
+    listItem.appendChild(movieInfo);
+    // Append the list item to the list
+    movieList.appendChild(listItem);
+  }
+}
+
+loadMovies();
+
+// Create a <li> for each movie that looks like this and add it to the list:
+//<li>
+  //<a href="http://www.imdb.com/title/tt0106611/">Cool Runnings</a>
+  //<span>(1993, 5.0 stars, 8 ratings)</span>
+//</li>
+
+// example for averaging ratings:
+  // var a = [1, 2, 3];
+  // var b = [4, 5, 6];
+  // for (var i = 0; i < a.length; i++) {
+    // for (var j = 0; j < b.length; j++) {
+    // }
+  // }
+
+// example for rounding to decimal point:
+  // var n = 3.145;
+  // var nToOneDecimal = Math.round(n * 10) / 10;
+
+
+</script>
