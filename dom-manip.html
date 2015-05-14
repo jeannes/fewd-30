@@ -1,0 +1,92 @@
+<style>
+body { font-family: sans-serif; }
+.set { border: 1px solid #ccc; padding: 0 2em; border-radius: 5px; margin-bottom: 2em; }
+#image { border: 5px dotted #ccc; border-radius: 10px; padding: 10px; margin-bottom: 1em; }
+.bold { font-weight: bold; }
+</style>
+
+<div class="set">
+  <h1>Set 1</h1>
+
+  <p>
+    Prompt for three todos and add each to this list:
+  </p>
+
+  <ul id="todo-list">
+    <li>First todo item...</li>
+  </ul>
+</div>
+
+<div class="set">
+  <h1>Set 2</h1>
+
+  <p>
+    Prompt for an image source, width, and height. Create an <code>&lt;img&gt;</code>,
+    set the respective attributes, and put it in this box:
+  </p>
+
+  <div id="image">
+  </div>
+</div>
+
+<div class="set">
+  <h1>Set 3</h1>
+
+  <p id="make-me-bold">
+    This paragraph is currently not bold. But there's a class <code>.bold</code>
+    set up in the CSS. Add that class to this paragraph. Yep, this one right here.
+  </p>
+</div>
+
+<script>
+
+//var todo = document.querySelector("#todo-list");
+//var newListItem = document.createElement("li");
+//var L1 = prompt("Give me to do item");
+//newListItem.textContent = L1;
+//todo.appendChild(newListItem);
+
+//var todo = document.querySelector("#todo-list");
+//var newListItem2 = document.createElement("li");
+//var L2 = prompt("Give me another to do item");
+//newListItem2.textContent = L2;
+//todo.appendChild(newListItem2);
+
+//var todo = document.querySelector("#todo-list");
+//var newListItem3 = document.createElement("li");
+//var L3 = prompt("Give me another to do item");
+//newListItem3.textContent = L3;
+//todo.appendChild(newListItem3);
+
+//or...
+
+function newItem() {
+  var todo = document.querySelector("#todo-list");
+  var newListItem = document.createElement("li");
+  var L1 = prompt("Give me to do item");
+  newListItem.textContent = L1;
+  todo.appendChild(newListItem);
+}
+
+newItem();
+newItem();
+newItem();
+
+function createImage(srcUrl, srcWidth, srcHeight) {
+  var body = document.querySelector("body");
+  var newImage = document.createElement("img");
+  newImage.setAttribute("src", srcUrl);
+  newImage.setAttribute("width", srcWidth);
+  newImage.setAttribute("height", srcHeight);
+  body.appendChild(newImage);
+  return newImage;
+}
+
+var newerImage = createImage("http://cloud.avandamiri.com/image/3z1n220j0G17/sausage.jpg");
+var imageContainer = document.querySelector("#image");
+imageContainer.appendChild(newerImage);
+
+var paragraph = document.querySelector("#make-me-bold");
+paragraph.setAttribute("class", "bold");
+
+</script>

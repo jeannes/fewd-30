@@ -1,0 +1,41 @@
+<script>
+
+// a = b assignation (assigning b to a)
+
+// a == b equal
+// a != b not equal
+// a > b greater than
+// a < b less than
+// a >= b greater than or equal to
+// a <= b less than or equal to
+
+var a = [509, 707, 490, 866, 826, 924, 949, 530, 915, 890, 677, 751, 227, 309, 532, 259, 982, 407, 229, 764, 925, 878, 925, 731, 898, 410, 117, 83, 306, 909, 224, 613]
+
+var max = 0;
+var sum = 0;
+var num = 0;
+var numbers = [];
+var evenNum = 0;
+
+for (var n = 0; n < a.length; n++) {
+// What's the largest number in the array?
+  if (a[n] > max) {
+    max = a[n];
+  }
+// What's the sum of all the numbers in the array?
+  sum += a[n];
+// How many numbers greater than 500?
+  if (a[n] > 500) {
+    num += 1;
+  }
+// Which numbers are between 300 and 700?
+  if (a[n] < 700 && a[n] > 300) {
+    numbers.push(a[n]);
+  }
+// How many even numbers?
+  if ((a[n] % 2) == 0) {
+    evenNum += 1;
+  }
+}
+
+</script>

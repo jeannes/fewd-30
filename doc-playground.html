@@ -1,0 +1,48 @@
+<p>
+  Hello World!
+</p>
+
+<ul>
+</ul>
+
+
+<script>
+
+  // Access the paragraph
+  var paragraph = document.querySelector("p");
+
+  // Set the paragraph's textContent
+  paragraph.textContent = "Goodbye world!";
+
+  //var = ...;
+
+  // Access the list
+  var list = document.querySelector("ul");
+
+  // Create new list item
+  var firstListItem = document.createElement("li");
+
+  // Define list item text content
+  firstListItem.textContent = "First item!";
+
+  // Append the new list item to the list
+  list.appendChild(firstListItem);
+
+  var secondListItem = document.createElement("li");
+  secondListItem.textContent = "Second item!";
+  list.appendChild(secondListItem);
+
+  var newImage = document.createElement("img");
+  newImage.setAttribute("src", "http://www.foodsubs.com/Photos/citaliansausage.jpg");
+  list.appendChild(newImage);
+
+  var newLink = document.createElement("a");
+  newLink.setAttribute("href", "http://www.foodsubs.com/Photos/citaliansausage.jpg");
+  newLink.textContent = "Sasauges!";
+  list.appendChild(newLink);
+
+  var newLinkListItem = document.createElement("li");
+  newLinkListItem.appendChild(newLink);
+  list.appendChild(newLinkListItem);
+
+</script>
