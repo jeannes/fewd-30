@@ -163,7 +163,9 @@
 
     <main>
       <div id="comic-page"> <!-- comic page --> <!-- has set size -->
-        <!-- create first panel div with class = "panel" and plus sign image -->
+        <div class="panel">
+        </div>
+        <!-- append plus sign image -->
         <!-- new panel divs created in JS - every time user uploads panel imgs into a panel, a new panel div is created -->
       </div>
 
@@ -215,9 +217,29 @@
 // Make #comic-page div an event listener, click --> prompt to upload img/urls
   // Create new panel div each time user uploads img
   var comicPage = document.querySelector("#comic-page");
+  var panelDiv = document.querySelector(".panel");
 
+  //append 'click to add image' image to panel div
+  function appendAddImage () {
+    var clickToAddImage = document.createElement("img");
+    clickToAddImage.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/click%20to%20add%20an%20image.png");
+    panelDiv.appendChild(clickToAddImage);
+  }
 
-  // make panel divs event listeners,
+  appendAddImage();
+
+  // make panel div an event listener, click and prompt for image path, append new image to panelDiv, run createPanelDiv function,
+  function appendPanelImage (event) {
+    event.preventDefault();
+    var panelImagePrompt = prompt("Please insert panel image url");
+    var panelImageUrl = panelImagePrompt.textContent;
+    var panelImage = document.createElement("img");
+    panelImage.setAttribute("src", panelImageUrl);
+    panelDiv.appendChild(panelImage);
+  }
+
+  panelDiv.addEventListener("click", appendPanelImage);
+
     //drag and drop for positioning?
     //click --> window zoom,
     //click right half --> next panel div
