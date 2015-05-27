@@ -163,9 +163,8 @@
 
     <main>
       <div id="comic-page"> <!-- comic page --> <!-- has set size -->
-        <div class="panel"></div>
         <!-- append plus sign image -->
-        <!-- new panel divs created in JS - every time user uploads panel imgs into a panel, a new panel div is created -->
+        <!-- make plus sign image an event handler - every time user uploads panel img, a new plus sign image is created -->
       </div>
 
       <nav id="main-nav"> <!-- previous, next buttons -->
@@ -216,14 +215,13 @@
 // Make #comic-page div an event listener, click --> prompt to upload img/urls
   // Create new panel div each time user uploads img
   var comicPage = document.querySelector("#comic-page");
-  var panelDiv = document.querySelector(".panel");
 
   //append 'click to add image' image to panel div
   function appendAddImage () {
     var clickToAddImage = document.createElement("img");
     clickToAddImage.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/click%20to%20add%20an%20image.png");
     clickToAddImage.setAttribute("class", "add-image");
-    panelDiv.appendChild(clickToAddImage);
+    comicPage.appendChild(clickToAddImage);
   }
 
   appendAddImage();
@@ -233,16 +231,17 @@
   // make panel div an event listener, click and prompt for image path, append new image to panelDiv, run createPanelDiv function,
   //create new panel divs, array, and loop
 
-  function appendPanelImage (event) {
+  function addPanelImage (event) {
     event.preventDefault();
     var panelImageUrl = prompt("Please insert panel image url or file path");
     var panelImage = document.createElement("img");
     panelImage.setAttribute("src", panelImageUrl);
-    panelDiv.removeChild(clickToAddImage);
-    panelDiv.appendChild(panelImage);
+    comicPage.removeChild(clickToAddImage);
+    comicPage.appendChild(panelImage);
+    appendAddImage();
   }
 
-  panelDiv.addEventListener("click", appendPanelImage);
+  clickToAddImage.addEventListener("click", addPanelImage);
 
     //drag and drop for positioning?
     //click --> window zoom,
