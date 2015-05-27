@@ -59,7 +59,7 @@
       footer {
         max-width: 600px;
         margin: 0 auto;
-        padding: 30px;
+        padding: 10px;
       }
       main #comic-page {
         background-color: white;
@@ -163,8 +163,7 @@
 
     <main>
       <div id="comic-page"> <!-- comic page --> <!-- has set size -->
-        <div class="panel">
-        </div>
+        <div class="panel"></div>
         <!-- append plus sign image -->
         <!-- new panel divs created in JS - every time user uploads panel imgs into a panel, a new panel div is created -->
       </div>
@@ -223,18 +222,23 @@
   function appendAddImage () {
     var clickToAddImage = document.createElement("img");
     clickToAddImage.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/click%20to%20add%20an%20image.png");
+    clickToAddImage.setAttribute("class", "add-image");
     panelDiv.appendChild(clickToAddImage);
   }
 
   appendAddImage();
 
+  var clickToAddImage = document.querySelector(".add-image");
+
   // make panel div an event listener, click and prompt for image path, append new image to panelDiv, run createPanelDiv function,
+  //create new panel divs, array, and loop
+
   function appendPanelImage (event) {
     event.preventDefault();
-    var panelImagePrompt = prompt("Please insert panel image url");
-    var panelImageUrl = panelImagePrompt.textContent;
+    var panelImageUrl = prompt("Please insert panel image url or file path");
     var panelImage = document.createElement("img");
     panelImage.setAttribute("src", panelImageUrl);
+    panelDiv.removeChild(clickToAddImage);
     panelDiv.appendChild(panelImage);
   }
 
