@@ -57,10 +57,11 @@
       /* main */
       main #comic-page,
       footer {
-        max-width: 600px;
+        max-width: 650px;
         margin: 0 auto;
-        padding: 5px;
+        padding: 15px;
       }
+
       main #comic-page {
         background-color: white;
         width: 768px;
@@ -71,11 +72,25 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       }
 
+      main #comic-page .panel {
+        margin: 5px;
+      }
+
       main #add-image {
         position: relative;
         bottom: 1000px;
-        width: 100;
-        height: 100;
+        margin: 20px;
+        width: 100px;
+        height: 100px;
+      }
+
+      main #done {
+        position: relative;
+        bottom: 850px;
+        right: 140px;
+        margin: 20px;
+        width: 100px;
+        height: 100px;
       }
 
       #main-nav {
@@ -105,7 +120,7 @@
       /* footer */
       footer {
         background-color: #2E2E2E;
-        margin-top: 20px;
+        /*margin-top: 20px;*/
         padding-top: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -199,7 +214,6 @@
       <div id="comments">
         <!--
         <div class="comment">
-          You're looking good! - Avand
         </div>
         -->
       </div>
@@ -222,38 +236,68 @@
 // Make #title-img div an event listener, click --> prompt to upload img/url
   // upload user's img into #title-img div
 
-// Make #comic-page div an event listener, click --> prompt to upload img/urls
-  // Create new panel div each time user uploads img
+// add image panels to the comicPage, create interactive panels
+  // find elements on the page
   var main = document.querySelector("#main");
   var comicPage = document.querySelector("#comic-page");
 
-  //append 'click to add image' image to main page
-  function appendAddImage () {
+  //append 'click to add image' image and 'click when done' image to main page
+  function appendClickImages () {
     var clickToAddImage = document.createElement("img");
     clickToAddImage.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/click%20to%20add%20an%20image.png");
     clickToAddImage.setAttribute("id", "add-image");
     main.appendChild(clickToAddImage);
+    var clickWhenDone = document.createElement("img");
+    clickWhenDone.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/click%20when%20done.png");
+    clickWhenDone.setAttribute("id", "done");
+    main.appendChild(clickWhenDone);
   }
 
-  appendAddImage();
+  //call the function
+  appendClickImages();
 
+  // find appended click images on page
   var clickToAddImage = document.querySelector("#add-image");
+  var clickWhenDone = document.querySelector("#done");
 
-  // make panel div an event listener, click and prompt for image path, append new image to panelDiv, run createPanelDiv function,
-  //create new panel divs, array, and loop
+  // make clickToAddImage an event listener, click and prompt for image path, append new image to comic page
   function addPanelImage (event) {
     event.preventDefault();
     var panelImageUrl = prompt("Please insert panel image url or file path");
-    var panelImage = document.createElement("img");
-    panelImage.setAttribute("src", panelImageUrl);
-    panelImage.setAttribute("class", "panel");
-    comicPage.appendChild(panelImage);
+    if (panelImageUrl == null) {
+
+    } else {
+      //create panelImage, make panelImage an event listener, click for pop-up window
+      var panelImage = document.createElement("img");
+      panelImage.setAttribute("src", panelImageUrl);
+      panelImage.setAttribute("class", "panel");
+      comicPage.appendChild(panelImage);
+      panelImage.addEventListener("click", function(event) {
+        event.preventDefault;
+        window.open(this.getAttribute("src"));
+      });
+    }
   }
 
   clickToAddImage.addEventListener("click", addPanelImage);
 
-    //drag and drop for positioning?
-    //click --> window zoom,
+  // find panelImage that was created on the page
+  var panelImage = document.querySelector(".panel");
+
+  // make clickWhenDone an event listener, alert "Are you Sure?", if so remove clickImages
+  function removeClickImages (event) {
+    event.preventDefault();
+    var reply = confirm("Are you sure?");
+    if (reply == true) {
+      clickToAddImage.remove();
+      clickWhenDone.remove();
+    } else {
+
+    }
+  }
+
+  clickWhenDone.addEventListener("click", removeClickImages);
+
     //click right half --> next panel div
     //click left half --> previous panel div
 
