@@ -274,7 +274,7 @@
       comicPage.appendChild(panelImage);
       panelImage.addEventListener("click", function(event) {
         event.preventDefault;
-        window.open(this.getAttribute("src"));
+        var imageUrl = window.open(this.getAttribute("src"));
       });
     }
   }
