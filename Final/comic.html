@@ -1,6 +1,9 @@
 <html>
   <head>
     <title>Interactive Webcomic</title>
+    <!--load JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <style>
       /* CSS goes here */
       html {
@@ -166,6 +169,49 @@
         cursor: pointer;
       }
 
+      /** LIGHTBOX MARKUP **/
+
+      .lightbox {
+      	/** Default lightbox to hidden */
+      	display: none;
+
+      	/** Position and style */
+      	position: fixed;
+      	z-index: 999;
+      	width: 100%;
+      	height: 100%;
+      	text-align: center;
+      	top: 0;
+      	left: 0;
+      	background: rgba(0,0,0,0.8);
+      }
+
+      .lightbox .lb-panel {
+      	/** Pad the lightbox image */
+      	height: 645px;
+      	margin: 0;
+      }
+
+      .lightbox .prev {
+        width: 50px;
+        position: relative;
+        bottom: 300px;
+      }
+
+      .lightbox .next {
+        width: 50px;
+        position: relative;
+        bottom: 300px;
+      }
+
+      .lightbox:target {
+      	/** Remove default browser outline */
+      	outline: none;
+
+      	/** Unhide lightbox **/
+      	display: block;
+      }
+
     </style>
   </head>
 
@@ -186,10 +232,25 @@
 
     <main id="main">
       <!-- append click to add image -->
-      <!-- append click when done image -->
-      <div id="comic-page"> <!-- comic page --> <!-- has set size -->
         <!-- make click to add image an event handler - every time user uploads panel img, img is appended in comic page -->
+      <!-- append click when done image -->
         <!-- make click when done image an event handler - when clicked, click images are removed -->
+      <div id="comic-page"> <!-- comic page --> <!-- has set size -->
+        <!-- create thumbnail image wrapped in a link in JS -->
+        <!--
+          <a href="#img1">
+            <img src="C:\Users\Jeannie\Documents\GitHub\fewd-30\Final\comic panels\MM-01.png">
+          </a>
+        -->
+
+        <!-- create corresponding lightbox container on html page hidden with CSS in JS-->
+        <!--
+          <div class="lightbox" id="img1">
+            <img class="prev" src="C:\Users\Jeannie\Documents\GitHub\fewd-30\Final\images\prev.png">
+            <img class="panel" src="C:\Users\Jeannie\Documents\GitHub\fewd-30\Final\comic panels\MM-01.png">
+            <img class="next" src="C:\Users\Jeannie\Documents\GitHub\fewd-30\Final\images\next.png">
+          </div>
+        -->
       </div>
 
       <nav id="main-nav"> <!-- previous, next buttons -->
@@ -261,25 +322,68 @@
   var clickWhenDone = document.querySelector("#done");
 
   // make clickToAddImage an event listener, click and prompt for image path, append new image to comic page
-  function addPanelImage (event) {
+  function createPanelImage (event) {
     event.preventDefault();
     var panelImageUrl = prompt("Please insert panel image url or file path");
     if (panelImageUrl == null) {
 
     } else {
-      //create panelImage, make panelImage an event listener, click for pop-up window
+      //create panelImage, click for lightbox modal
+      //create link for panelImage
+      var panelLink = document.createElement("a");
+      panelLink.setAttribute("class", "panel-link")
+      var imgId = "img" + $(".panel-link").length;
+      panelLink.setAttribute("href", "#" + imgId);
+      comicPage.appendChild(panelLink);
+      //create panelImage and append to Link
       var panelImage = document.createElement("img");
       panelImage.setAttribute("src", panelImageUrl);
       panelImage.setAttribute("class", "panel");
-      comicPage.appendChild(panelImage);
-      panelImage.addEventListener("click", function(event) {
-        event.preventDefault;
-        var imageUrl = window.open(this.getAttribute("src"));
-      });
+      panelLink.appendChild(panelImage);
+      //create lightbox div
+      var lightbox = document.createElement("div");
+      lightbox.setAttribute("class", "lightbox");
+      lightbox.setAttribute("id", imgId);
+      comicPage.appendChild(lightbox);
+      //create prev image in lightbox div
+      var prevImg = document.createElement("img");
+      prevImg.setAttribute("class", "prev");
+      prevImg.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/prev.png");
+      lightbox.appendChild(prevImg);
+      //create lbPanel image in lightbox div
+      var lbPanel = document.createElement("img");
+      lbPanel.setAttribute("class", "lb-panel");
+      lbPanel.setAttribute("src", panelImageUrl);
+      lightbox.appendChild(lbPanel);
+      //create next image in lightbox div
+      var nextImg = document.createElement("img");
+      nextImg.setAttribute("class", "next");
+      nextImg.setAttribute("src", "http://jeannes.github.io/fewd-30/Final/images/next.png");
+      lightbox.appendChild(nextImg);
+      //find all dynamically created prev and next images
+      // make previous image an event listener
+      prevImg.addEventListener("click", function(e){
+        e.stopPropagation();
+        var currentImageId = location.href.split("#")[1];
+        var prevImageId = 'img' + (parseInt(currentImageId.split('img')[1])-1);
+        location.replace(location.href.split("#")[0] + '#' + prevImageId);
+      })
+      //make next image an event listener
+      nextImg.addEventListener("click", function(e){
+        e.stopPropagation();
+        var currentImageId = location.href.split("#")[1];
+        var nextImageId = 'img' + (parseInt(currentImageId.split('img')[1])+1);
+        location.replace(location.href.split("#")[0] + '#' + nextImageId);
+      })
+      //to exit lightbox by clicking outside
+      lightbox.addEventListener('click', function (e) {
+        e.preventDefault();
+        location.replace(location.href.split("#")[0] + '#_')
+      })
     }
   }
 
-  clickToAddImage.addEventListener("click", addPanelImage);
+  clickToAddImage.addEventListener("click", createPanelImage);
 
   // find panelImage that was created on the page
   var panelImage = document.querySelector(".panel");
@@ -298,10 +402,9 @@
 
   clickWhenDone.addEventListener("click", removeClickImages);
 
-    //click right half --> next panel div
-    //click left half --> previous panel div
 
-//like link function
+// comment section
+  //like link function
   var likeLink = document.querySelector(".like-link");
   var likeCount = document.querySelector(".like-count");
 
