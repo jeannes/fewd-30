@@ -13,8 +13,7 @@
       body {
         margin: 0;
       }
-      /* place and size #header-img, #title-img, and nav elements */
-        /* #title-img and nav elements overlap #header-img */
+
       /* header */
       header#header-img {
         background-color: #1C1C1C;
@@ -22,15 +21,6 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         position: relative;
       }
-      /*#title-img {
-        width: 300px;
-        height: 55px;
-        padding: 20px 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        position: absolute;
-        left: 40px;
-        top: 20px;
-      }*/
       #header-nav {
         font-weight: bold;
         text-shadow: 0 1px 0 #555;
@@ -61,7 +51,6 @@
         margin: 0 auto;
         padding: 15px;
       }
-
       main #comic-page {
         background-color: white;
         width: 650px;
@@ -71,37 +60,32 @@
         border: 1px solid #C7C7C7;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       }
-
       main #comic-page .panel {
         margin: 5px;
       }
-
       main #add-header {
         position:relative;
         margin: 20px;
         bottom: 1150px;
-        right: 190px;
-        width: 150px;
-        height: 150px;
+        right: 160px;
+        width: 120px;
+        height: 120px;
       }
-
       main #add-image {
         position: relative;
         bottom: 975px;
         margin: 20px;
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
       }
-
       main #done {
         position: relative;
         bottom: 825px;
-        right: 380px;
+        right: 320px;
         margin: 20px;
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
       }
-
       #main-nav {
         text-shadow: 0 1px 0 #555;
         position: relative;
@@ -129,7 +113,6 @@
       /* footer */
       footer {
         background-color: #2E2E2E;
-        /*margin-top: 20px;*/
         padding-top: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -164,7 +147,6 @@
         border-bottom: 1px solid #ccc;
         color: #ccc;
       }
-
       #comment-button {
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-bottom-width: 2px;
@@ -194,20 +176,20 @@
 
       .lightbox .lb-panel {
         /** Pad the lightbox image */
-        height: 645px;
+        height: 100%;
         margin: 0;
       }
 
       .lightbox .prev {
         width: 50px;
         position: relative;
-        bottom: 300px;
+        bottom: 50%;
       }
 
       .lightbox .next {
         width: 50px;
         position: relative;
-        bottom: 300px;
+        bottom: 50%;
       }
 
       .lightbox:target {
@@ -223,10 +205,7 @@
 
   <body>
     <header id="header-img">
-      <!-- make event listener in JS - user can upload img -->
-      <!-- <div id="title-img">
-         make event listener in JS - user can upload img
-      </div> -->
+      <!-- make header-img an event listener in JS - user can upload img -->
       <nav id="header-nav">
         <ul>
           <li><a id="comic" href="">Comic</a></li> <!-- linked to latest page of comic -->
@@ -298,12 +277,6 @@
 <script>
 // JS goes here
 
-// Make #header-img div an event listener, click --> prompt to upload img/url
-  // upload user's img into #header-img div
-
-// Make #title-img div an event listener, click --> prompt to upload img/url
-  // upload user's img into #title-img div
-
 // add image panels to the comicPage, create interactive panels
   // find elements on the page
   var main = document.querySelector("#main");
@@ -341,7 +314,7 @@
     if (panelImageUrl == null) {
 
     } else {
-      //create panelImage, click for lightbox modal
+    //create panelImage, click for lightbox modal
       //create link for panelImage
       var panelLink = document.createElement("a");
       panelLink.setAttribute("class", "panel-link")
