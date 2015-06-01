@@ -337,7 +337,7 @@
   // make clickToAddImage an event listener, click and prompt for image path, append new image to comic page
   function createPanelImage (event) {
     event.preventDefault();
-    var panelImageUrl = prompt("Please insert panel image url or file path. \nMake sure all panel images fit within comic page \n(650 X 1000 px).");
+    var panelImageUrl = prompt("Please insert panel image url. \nMake sure all panel images fit within comic page \n(650 X 1000 px).");
     if (panelImageUrl == null) {
 
     } else {
@@ -401,7 +401,7 @@
   //make clickToAddHeader an eventlistener, click to prompt for image path, append image to header
   function createHeaderImage(event) {
     event.preventDefault();
-    var headerImageUrl = prompt("Please insert panel image url or file path. \nMake sure image has at least the width of your browser window and a height of 140px.");
+    var headerImageUrl = prompt("Please insert panel image url. \nMake sure image has at least the width of your browser window and a height of 140px.");
     if (headerImageUrl == null) {
 
     } else {
